@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+# 목차
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+재사용 가능한 공용 컴포넌트들을 아카이빙할 레포지토리 입니다.
 
-Currently, two official plugins are available:
+1. [AutoResizeTextArea](#AutoResizeTextArea)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## `AutoResizeTextArea`
 
-## Expanding the ESLint configuration
+`AutoResizeTextArea`는 입력 내용에 따라 자동으로 크기가 조정되는 텍스트 영역 컴포넌트입니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`useRef`와 `useEffect`를 사용하여 텍스트 영역의 크기를 조정합니다.
 
-- Configure the top-level `parserOptions` property like this:
+자세한 구현 내용은 [AutoResizeTextArea.tsx](src/components/AutoResizeTextArea.tsx) 파일을 참고하세요.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 사용법
+
+```tsx
+import AutoResizeTextArea from "@/components/AutoResizeTextArea";
+
+function App() {
+  return <AutoResizeTextArea placeholder="Type here..." />;
+}
+
+export default App;
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Props
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+`AutoResizeTextArea`는 기본적으로 HTML `<textarea>` 요소의 모든 속성을 지원합니다. 추가적으로 `className`을 통해 스타일을 지정할 수 있습니다.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 예제
+
+```tsx
+import AutoResizeTextArea from "@/components/AutoResizeTextArea";
+
+function Example() {
+  const [input, setInput] = useState("");
+  return (
+    <div>
+      {input}
+      <AutoResizeTextArea
+        onChange={(e) => setInput(e.currentTarget.value)}
+        className="my-textarea"
+        placeholder="Type something..."
+      />
+    </div>
+  );
+}
+
+export default Example;
 ```
