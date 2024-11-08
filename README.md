@@ -49,3 +49,7 @@ function Example() {
 
 export default Example;
 ```
+
+### 사용 **화면**
+
+![alt text](<./src/assets/화면 기록 2024-11-08 오후 12.44.20.gif>)
