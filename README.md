@@ -2,7 +2,7 @@
 
 재사용 가능한 공용 컴포넌트들을 아카이빙할 레포지토리 입니다.
 
-1. [AutoResizeTextArea](#AutoResizeTextArea)
+1. [AutoResizeTextArea](#autoresizetextarea)
 
 ## `AutoResizeTextArea`
 
@@ -52,4 +52,4 @@ export default Example;
 
 ### 사용 **화면**
 
-![alt text](<./src/assets/화면 기록 2024-11-08 오후 12.44.20.gif>)
+![alt text](./src/assets/AutoResizeTextArea.gif)
